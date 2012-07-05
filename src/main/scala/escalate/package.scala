@@ -37,7 +37,7 @@ package object spring {
    * {{{
    *   import escalate.spring._
    *   implicit val ctx = new ClassPathXmlApplicationContext("context.xml")
-   *   val myBean = bean[MyClass]("myBeanName")
+   *   val myBean = getBean[MyClass]("myBeanName")
    * }}}
    *
    * @param beanName a bean name to find
@@ -45,6 +45,9 @@ package object spring {
    * @tparam A
    * @return
    */
-  def bean[A](beanName: String)(implicit appCtx: ApplicationContext, m: Manifest[A]) = appCtx.getBean(beanName, m.erasure)
+  def getBean[A](beanName: String)(implicit appCtx: ApplicationContext, m: Manifest[A]) = appCtx.getBean(beanName, m.erasure)
+
+
+
 }
 
